@@ -9,5 +9,5 @@ public interface Serializer {
    * @param obj the serializable object
    * @return the string representation of the object
    */
-  String serialize(Object obj) throws UnaccessibleFieldException;
+  void serialize(String fileName, Object obj) throws UnaccessibleFieldException;
 }
