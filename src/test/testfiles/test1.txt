@@ -1,1 +1,0 @@
-[{"mark":"Toyota","maxSpeed":140,"owner":{"name":"Petr"}},{"mark":"BMW","maxSpeed":170,"owner":{"name":"Petr"}},{"mark":"Lada","maxSpeed":120,"owner":{"name":"Petr"}}]

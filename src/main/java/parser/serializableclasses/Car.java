@@ -3,12 +3,12 @@ package parser.serializableclasses;
 import parser.parserannotations.Renamed;
 
 public class Car {
-  @Renamed(secondName = "mark")
   private String model;
 
+  @Renamed(secondName = "speed")
   private int maxSpeed;
 
-  //private Double[] array;
+  private Double[][] array;
 
   private Owner owner;
 
@@ -17,10 +17,12 @@ public class Car {
   public Car(String aModel, int aMaxSpeed) {
     model = aModel;
     maxSpeed = aMaxSpeed;
-    owner = new Owner();
-    /*array = new Double[] {
-            2.0, 9.45, 3.14
-    };*/
+    //owner = new Owner();
+    array = new Double[][] {
+            new Double[]{2.0, 9.21},
+            new Double[]{2.0, 289d},
+            new Double[]{2.0, 4.3}
+    };
   }
 
   public int getMaxSpeed() {

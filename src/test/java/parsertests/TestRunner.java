@@ -6,7 +6,7 @@ import org.junit.runner.notification.Failure;
 
 public class TestRunner {
   static public void main(String args[]) {
-    Result result = JUnitCore.runClasses(TestParsing.class);
+    Result result = JUnitCore.runClasses(TestSaxParsing.class, TestDomParsing.class);
     for (Failure fail : result.getFailures()) {
       System.out.println("------------");
       System.out.println(fail.getDescription());

@@ -1,5 +1,11 @@
 package parser.deserializers;
 
+import parser.exceptions.DefaultConstructorException;
+import parser.exceptions.InvalidSyntaxException;
+import parser.exceptions.InvalidValueException;
+
+import java.io.IOException;
+
 public interface Deserializer {
   /**
    * Deserializes object from a given file
@@ -9,5 +15,6 @@ public interface Deserializer {
    * @param <T> The type of the object
    * @return extracted object or null
    */
-  <T> T deserialize(String fileName, Class<T> cls);
+  <T> T deserialize(String fileName, Class<T> cls)
+          throws InvalidSyntaxException, IOException, InvalidValueException, DefaultConstructorException;
 }

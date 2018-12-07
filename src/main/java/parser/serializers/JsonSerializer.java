@@ -13,7 +13,7 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- *
+ * Serializer of object to JSON files
  */
 public class JsonSerializer implements Serializer, JsonSyntax, TypeChecker {
 
@@ -55,17 +55,22 @@ public class JsonSerializer implements Serializer, JsonSyntax, TypeChecker {
       declaredFields[i].setAccessible(true);
       // get the value of the field
       Object value = declaredFields[i].get(obj);
-      // get the type of the value
-      Class<?> valueClass = value.getClass();
-      if (isString(valueClass)) {
-        fileWriter.write(asString(value));
-      }
-      else if (isWrapperType(valueClass) || valueClass.isPrimitive()) {
-        fileWriter.write(value.toString());
+      if (value == null) {
+        fileWriter.write("null");
       }
       else {
-        // recursion
-        serializeAnyType(fileWriter, value, valueClass);
+        // get the type of the value
+        Class<?> valueClass = value.getClass();
+        if (isString(valueClass)) {
+          fileWriter.write(asString(value));
+        }
+        else if (isWrapperType(valueClass) || valueClass.isPrimitive()) {
+          fileWriter.write(value.toString());
+        }
+        else {
+          // recursion
+          serializeAnyType(fileWriter, value, valueClass);
+        }
       }
       declaredFields[i].setAccessible(false);
       if (i != declaredFields.length - 1) {
